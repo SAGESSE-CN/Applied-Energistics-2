@@ -25,6 +25,7 @@ import net.minecraft.util.text.ITextComponent;
 
 import appeng.client.gui.AEBaseScreen;
 import appeng.client.gui.widgets.TabButton;
+import appeng.client.theme.ThemeColor;
 import appeng.container.implementations.DriveContainer;
 import appeng.container.implementations.PriorityContainer;
 import appeng.core.localization.GuiText;
@@ -53,8 +54,10 @@ public class DriveScreen extends AEBaseScreen<DriveContainer> {
     @Override
     public void drawFG(MatrixStack matrixStack, final int offsetX, final int offsetY, final int mouseX,
             final int mouseY) {
-        this.font.drawString(matrixStack, this.getGuiDisplayName(GuiText.Drive.text()).getString(), 8, 6, 4210752);
-        this.font.drawString(matrixStack, GuiText.inventory.text().getString(), 8, this.ySize - 96 + 3, 4210752);
+        this.font.drawString(matrixStack, this.getGuiDisplayName(GuiText.Drive.text()).getString(), 8, 6,
+                ThemeColor.TEXT_TITLE.argb());
+        this.font.drawString(matrixStack, GuiText.inventory.text().getString(), 8, this.ySize - 96 + 3,
+                ThemeColor.TEXT_TITLE.argb());
     }
 
     @Override

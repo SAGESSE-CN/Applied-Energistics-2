@@ -25,6 +25,7 @@ import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.text.ITextComponent;
 
 import appeng.client.gui.AEBaseScreen;
+import appeng.client.theme.ThemeColor;
 import appeng.container.implementations.SkyChestContainer;
 import appeng.core.AppEng;
 import appeng.core.localization.GuiText;
@@ -41,8 +42,10 @@ public class SkyChestScreen extends AEBaseScreen<SkyChestContainer> {
     @Override
     public void drawFG(MatrixStack matrixStack, final int offsetX, final int offsetY, final int mouseX,
             final int mouseY) {
-        this.font.drawString(matrixStack, this.getGuiDisplayName(GuiText.SkyChest.text()).getString(), 8, 8, 4210752);
-        this.font.drawString(matrixStack, GuiText.inventory.getLocal(), 8, this.ySize - 96 + 2, 4210752);
+        this.font.drawString(matrixStack, this.getGuiDisplayName(GuiText.SkyChest.text()).getString(), 8, 8,
+                ThemeColor.TEXT_TITLE.argb());
+        this.font.drawString(matrixStack, GuiText.inventory.getLocal(), 8, this.ySize - 96 + 2,
+                ThemeColor.TEXT_TITLE.argb());
     }
 
     @Override

@@ -53,6 +53,7 @@ import appeng.client.gui.widgets.Scrollbar;
 import appeng.client.gui.widgets.SettingToggleButton;
 import appeng.client.me.ClientDCInternalInv;
 import appeng.client.me.SlotDisconnected;
+import appeng.client.theme.ThemeColor;
 import appeng.container.implementations.InterfaceTerminalContainer;
 import appeng.container.slot.AppEngSlot;
 import appeng.core.AEConfig;
@@ -185,7 +186,7 @@ public class InterfaceTerminalScreen extends AEBaseScreen<InterfaceTerminalConta
     public void drawFG(MatrixStack matrixStack, final int offsetX, final int offsetY, final int mouseX,
             final int mouseY) {
         this.font.drawString(matrixStack, this.getGuiDisplayName(GuiText.InterfaceTerminal.text()).getString(),
-                GUI_PADDING_X, GUI_PADDING_Y, COLOR_DARK_GRAY);
+                GUI_PADDING_X, GUI_PADDING_Y, ThemeColor.TEXT_TITLE.argb());
 
         this.container.inventorySlots.removeIf(slot -> slot instanceof SlotDisconnected);
 
@@ -211,13 +212,13 @@ public class InterfaceTerminalScreen extends AEBaseScreen<InterfaceTerminalConta
                     name = this.font.func_238413_a_(name, TEXT_MAX_WIDTH, true);
 
                     this.font.drawString(matrixStack, name, GUI_PADDING_X + INTERFACE_NAME_MARGIN_X,
-                            GUI_PADDING_Y + GUI_HEADER_HEIGHT + i * ROW_HEIGHT, COLOR_DARK_GRAY);
+                            GUI_PADDING_Y + GUI_HEADER_HEIGHT + i * ROW_HEIGHT, ThemeColor.TEXT_TITLE.argb());
                 }
             }
         }
 
         this.font.drawString(matrixStack, GuiText.inventory.text().getString(), GUI_PADDING_X,
-                HEADER_TEXT_MARGIN_Y + GUI_HEADER_HEIGHT + i * ROW_HEIGHT, COLOR_DARK_GRAY);
+                HEADER_TEXT_MARGIN_Y + GUI_HEADER_HEIGHT + i * ROW_HEIGHT, ThemeColor.TEXT_TITLE.argb());
     }
 
     @Override

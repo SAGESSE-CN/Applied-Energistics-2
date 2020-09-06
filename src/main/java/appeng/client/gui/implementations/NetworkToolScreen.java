@@ -25,6 +25,7 @@ import net.minecraft.util.text.ITextComponent;
 
 import appeng.client.gui.AEBaseScreen;
 import appeng.client.gui.widgets.ToggleButton;
+import appeng.client.theme.ThemeColor;
 import appeng.container.implementations.NetworkToolContainer;
 import appeng.core.localization.GuiText;
 import appeng.core.sync.network.NetworkHandler;
@@ -62,8 +63,9 @@ public class NetworkToolScreen extends AEBaseScreen<NetworkToolContainer> {
         }
 
         this.font.drawString(matrixStack, this.getGuiDisplayName(GuiText.NetworkTool.text()).getString(), 8, 6,
-                4210752);
-        this.font.drawString(matrixStack, GuiText.inventory.getLocal(), 8, this.ySize - 96 + 3, 4210752);
+                ThemeColor.TEXT_TITLE.argb());
+        this.font.drawString(matrixStack, GuiText.inventory.getLocal(), 8, this.ySize - 96 + 3,
+                ThemeColor.TEXT_TITLE.argb());
     }
 
     @Override

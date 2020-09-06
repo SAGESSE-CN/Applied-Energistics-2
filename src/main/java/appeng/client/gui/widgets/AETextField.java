@@ -29,6 +29,8 @@ import net.minecraft.client.renderer.Tessellator;
 import net.minecraft.client.renderer.vertex.DefaultVertexFormats;
 import net.minecraft.util.text.StringTextComponent;
 
+import appeng.client.theme.ThemeColor;
+
 /**
  * A modified version of the Minecraft text field. You can initialize it over the full element span. The mouse click
  * area is increased to the full element subtracted with the defined padding.
@@ -39,7 +41,7 @@ public class AETextField extends TextFieldWidget {
     private static final int PADDING = 2;
 
     private final int _fontPad;
-    private int selectionColor = 0xFF00FF00;
+    private int selectionColor;
 
     /**
      * Uses the values to instantiate a padded version of a text field. Pays attention to the '_' caret.
@@ -57,6 +59,7 @@ public class AETextField extends TextFieldWidget {
                 StringTextComponent.EMPTY);
 
         this._fontPad = fontRenderer.getStringWidth("_");
+        this.selectionColor = ThemeColor.TEXT_INPUT_SELECTION.argb();
     }
 
     public void selectAll() {
@@ -74,11 +77,11 @@ public class AETextField extends TextFieldWidget {
             if (this.isFocused()) {
                 fill(matrixStack, this.x - PADDING + 1, this.y - PADDING + 1,
                         this.x + this.width + this._fontPad + PADDING - 1, this.y + this.height + PADDING - 1,
-                        0xFF606060);
+                        ThemeColor.FOREGROUND_INPUT_FOCUSED.argb());
             } else {
                 fill(matrixStack, this.x - PADDING + 1, this.y - PADDING + 1,
                         this.x + this.width + this._fontPad + PADDING - 1, this.y + this.height + PADDING - 1,
-                        0xFFA8A8A8);
+                        ThemeColor.FOREGROUND_INPUT_NORMAL.argb());
             }
             super.renderButton(matrixStack, mouseX, mouseY, partial);
         }

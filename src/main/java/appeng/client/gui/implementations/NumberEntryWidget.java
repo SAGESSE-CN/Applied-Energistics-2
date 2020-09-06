@@ -38,6 +38,7 @@ import appeng.client.gui.AEBaseScreen;
 import appeng.client.gui.NumberEntryType;
 import appeng.client.gui.widgets.ConfirmableTextField;
 import appeng.client.gui.widgets.ValidationIcon;
+import appeng.client.theme.ThemeColor;
 import appeng.core.AEConfig;
 
 /**
@@ -51,8 +52,6 @@ public class NumberEntryWidget extends AbstractGui {
     private static final String NUMBER_LESS_THAN_MIN_VALUE = "gui.appliedenergistics2.validation.NumberLessThanMinValue";
     private static final ITextComponent PLUS = new StringTextComponent("+");
     private static final ITextComponent MINUS = new StringTextComponent("-");
-    private static final int TEXT_COLOR_ERROR = 0xFF1900;
-    private static final int TEXT_COLOR_NORMAL = 0xFFFFFF;
 
     private final AEBaseScreen<?> parent;
 
@@ -86,7 +85,7 @@ public class NumberEntryWidget extends AbstractGui {
                 StringTextComponent.EMPTY);
         this.textField.setEnableBackgroundDrawing(false);
         this.textField.setMaxStringLength(16);
-        this.textField.setTextColor(TEXT_COLOR_NORMAL);
+        this.textField.setTextColor(ThemeColor.TEXT_INPUT_NORMAL.argb());
         this.textField.setVisible(true);
         this.textField.setFocused2(true);
         parent.setFocusedDefault(this.textField);
@@ -209,8 +208,7 @@ public class NumberEntryWidget extends AbstractGui {
 
     public void setValue(long value) {
         this.textField.setText(String.valueOf(Math.max(minValue, value)));
-        this.textField.setCursorPositionEnd();
-        this.textField.setSelectionPos(0);
+        this.textField.setFocused2(false);
         validate();
     }
 
@@ -236,7 +234,7 @@ public class NumberEntryWidget extends AbstractGui {
         }
 
         boolean valid = validationErrors.isEmpty();
-        this.textField.setTextColor(valid ? TEXT_COLOR_NORMAL : TEXT_COLOR_ERROR);
+        this.textField.setTextColor(valid ? ThemeColor.TEXT_INPUT_NORMAL.argb() : ThemeColor.TEXT_INPUT_ERROR.argb());
         if (this.validationIcon != null) {
             this.validationIcon.setValid(valid);
             this.validationIcon.setTooltip(validationErrors);
